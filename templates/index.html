@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previon | Attack Graph Visualizer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.26.0/cytoscape.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.min.js"></script>
+</head>
+
+<body>
+    <!-- Cyber-Scan Loader -->
+    <div class="loading-overlay" id="loader">
+        <div class="loading-wrapper">
+            <div class="cyber-loader"></div>
+            <div class="loading-text">INITIALIZING NEURAL LINK...</div>
+        </div>
+    </div>
+    <!-- Command Link HUD -->
+    <div class="top-dashboard" id="topDashboard">
+        <div class="dash-item" onclick="toggleDashTooltip(this, event)">
+            <i class="fa-solid fa-users"></i>
+            <span id="statUsers" class="dash-val">--</span>
+            <span class="dash-label">USERS</span>
+            <div class="dash-tooltip" id="listUsers">Loading...</div>
+        </div>
+        <div class="dash-item" onclick="toggleDashTooltip(this, event)">
+            <i class="fa-solid fa-server"></i>
+            <span id="statComputers" class="dash-val">--</span>
+            <span class="dash-label">SYSTEMS</span>
+            <div class="dash-tooltip" id="listComputers">Loading...</div>
+        </div>
+        <div class="dash-item" onclick="toggleDashTooltip(this, event)" style="--accent-item: var(--warning)">
+            <i class="fa-solid fa-user-shield"></i>
+            <span id="statAdmins" class="dash-val">--</span>
+            <span class="dash-label">ADMINS</span>
+            <div class="dash-tooltip" id="listAdmins">Loading...</div>
+        </div>
+        <div class="dash-item" onclick="toggleDashTooltip(this, event)" style="--accent-item: var(--danger)">
+            <i class="fa-solid fa-scroll"></i>
+            <span id="statGPOs" class="dash-val">--</span>
+            <span class="dash-label">GPOS</span>
+            <div class="dash-tooltip" id="listGPOs">Loading...</div>
+        </div>
+    </div>
+
+    <!-- File Command Link (Top Right) -->
+    <div class="top-dashboard file-dashboard" id="fileDashboard"
+        style="left: auto; right: 20px; width: auto; min-width: 200px;">
+        <div class="dash-item" onclick="toggleFileDropdown(event)">
+            <i class="fa-solid fa-file-code"
+                style="color: var(--success); filter: drop-shadow(0 0 5px rgba(16, 185, 129, 0.4))"></i>
+            <span id="currentFileVal" class="dash-val" style="font-size: 0.85rem">Loading...</span>
+            <i class="fa-solid fa-caret-down"
+                style="font-size: 0.7rem; color: var(--text-muted); margin-left: 5px;"></i>
+
+            <div class="dash-tooltip" id="fileMenu">
+                <div class="tooltip-header"
+                    style="padding: 8px; font-weight: 700; color:var(--text-muted); font-size: 0.7rem; border-bottom: 1px solid rgba(255,255,255,0.1)">
+                    AVAILABLE DATASETS</div>
+                <div id="fileListContainer"></div>
+                <div class="file-upload-section"
+                    onclick="document.getElementById('uploadInput').click(); event.stopPropagation();"
+                    style="padding: 10px; margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.1); cursor: pointer; color: var(--accent); font-weight: 600; font-size: 0.8rem; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-cloud-arrow-up"></i> Upload New .JSON
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="file" id="uploadInput" accept=".json" style="display: none" onchange="handleFileUpload(this)">
+
+
+    <div class="sidebar" id="sidebarPanel">
+        <div class="sidebar-header">
+            <h1 class="brand"><i class="fa-solid fa-layer-group"></i> PREVION</h1>
+        </div>
+
+        <div class="sidebar-content">
+
+            <!-- Target Section -->
+            <div>
+                <div class="section-title">Target Definition</div>
+
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-circle-dot input-leading-icon"></i>
+                    <input type="text" id="sourceInp" placeholder="Source..." />
+                    <div class="input-trailing-action">
+                        <button class="btn-icon-xs" onclick="setAsSource()" title="Use Selected"><i
+                                class="fa-solid fa-crosshairs"></i></button>
+                    </div>
+                </div>
+
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-location-dot input-leading-icon"></i>
+                    <input type="text" id="targetInp" placeholder="Target..." />
+                    <div class="input-trailing-action">
+                        <button class="btn-icon-xs" onclick="setAsTarget()" title="Use Selected"><i
+                                class="fa-solid fa-crosshairs"></i></button>
+                    </div>
+                </div>
+
+                <button class="btn-ghost action-btn" onclick="useOwnedAsSource()"
+                    style="font-size: 0.75rem; padding: 0 12px; height: 30px;"
+                    title="Start attack simulation from any compromised node">
+                    <i class="fa-solid fa-skull"></i> Start from Compromised
+                </button>
+            </div>
+
+            <!-- Analysis Section -->
+            <div>
+                <div class="section-title">Simulate Attack</div>
+                <button class="action-btn btn-blue" onclick="findPath('shortest')"
+                    title="Find the path with minimum number of hops">
+                    <i class="fa-solid fa-bolt"></i> Trace Fastest Path
+                </button>
+                <button class="action-btn btn-ghost" onclick="findPath('easiest')"
+                    title="Find the path with lowest exploitation difficulty">
+                    <i class="fa-solid fa-user-ninja"></i> Trace Stealthiest Path
+                </button>
+            </div>
+
+            <!-- Controls -->
+            <div>
+                <div class="section-title">Graph Orchestration</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                    <button class="action-btn btn-ghost" onclick="resetGraph()"
+                        title="Reset graph view and clear all highlights">Reset View</button>
+                    <button class="action-btn btn-ghost" onclick="clearOwned()"
+                        title="Remove all compromised node markings">Clear Data</button>
+                    <button id="btnPruneIsolated" class="action-btn btn-ghost" onclick="toggleIsolatedNodes()"
+                        title="Toggle visibility of nodes with no connections" style="grid-column: span 2;">
+                        <i class="fa-solid fa-eye-slash"></i> Hide Isolated Nodes
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="sidebar-footer">
+            <div class="section-title">SESSION SUMMARY</div>
+            <div class="stat-row">
+                <span>Compromised</span>
+                <span id="ownedCount" class="stat-val" style="color: var(--danger)">0</span>
+            </div>
+            <div class="stat-row">
+                <span>Loot Items</span>
+                <span id="lootCount" class="stat-val" style="color: var(--warning)">0</span>
+            </div>
+            <div class="stat-row">
+                <span>Path Hops</span>
+                <span id="pathHops" class="stat-val">--</span>
+            </div>
+
+            <div class="legend-mini">
+                <div class="legend-dot-wrapper"><span class="dot-mini" style="background: #3b82f6"></span> User</div>
+                <div class="legend-dot-wrapper"><span class="dot-mini" style="background: #ef4444"></span> Owned</div>
+                <div class="legend-dot-wrapper"><span class="dot-mini" style="background: #eab308"></span> HighVal</div>
+                <div class="legend-dot-wrapper"><span class="dot-mini" style="background: #10b981"></span> GPO/Domain
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <div id="cy"></div>
+
+        <!-- Floating Controls -->
+        <div class="canvas-controls">
+            <button class="btn-glass-round" onclick="reAlignGraph()" title="Re-align Graph">
+                <i class="fa-solid fa-rotate"></i>
+            </button>
+            <button id="btnClearImpact" class="btn-glass-round" onclick="clearImpactAnalysis()"
+                title="Clear Impact Analysis"
+                style="display: none; background: rgba(239, 68, 68, 0.4); border-color: rgba(239, 68, 68, 0.5);">
+                <i class="fa-solid fa-eraser"></i>
+            </button>
+        </div>
+
+        <!-- Attack Playbook Panel (Bottom Sheet) -->
+        <div id="playbookPanel" class="playbook-panel">
+            <div class="playbook-header">
+                <h3><i class="fa-solid fa-terminal"></i> Attack Playbook</h3>
+                <button onclick="closePlaybook()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="playbookContent" class="playbook-content">
+                <!-- Dynamic Steps go here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Properties Panel (Right Side) -->
+    <div id="propertiesPanel" class="properties-panel">
+        <div class="properties-header">
+            <h3><i class="fa-solid fa-info-circle"></i> Node Properties</h3>
+            <button onclick="closeProperties()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div id="propertiesContent" class="properties-content">
+            <!-- Dynamic properties go here -->
+        </div>
+        <div class="properties-actions" style="padding: 12px; border-top: 1px solid #334155; display: none;"
+            id="propActions">
+            <div class="section-title">Loot & Notes</div>
+            <textarea id="nodeNotes" placeholder="Add investigation notes..." class="prop-textarea"></textarea>
+            <textarea id="nodeLoot" placeholder="Add captured loot (hashes, passwords)..." class="prop-textarea"
+                style="background: #0f172a; font-family: monospace;"></textarea>
+            <button class="action-btn btn-blue" onclick="saveNodeDetails()" style="margin-top: 8px;">Save
+                Details</button>
+        </div>
+    </div>
+    </div>
+
+    <!-- Context Menu -->
+    <div id="ctxMenu" class="ctx-menu">
+        <div class="ctx-item" onclick="handleCtx('owned')"><i class="fa-solid fa-skull"></i> Mark as Owned</div>
+        <div class="ctx-item" onclick="handleCtx('unowned')"><i class="fa-solid fa-shield"></i> Unmark as Owned</div>
+        <div class="ctx-item" onclick="handleCtx('source')"><i class="fa-solid fa-plane-departure"></i> Set as Source
+        </div>
+        <div class="ctx-item" onclick="handleCtx('target')"><i class="fa-solid fa-bullseye"></i> Set as Target</div>
+        <div class="ctx-item" onclick="handleCtx('impact')"><i class="fa-solid fa-radiation"></i> Impact Analysis</div>
+        <div class="ctx-item" onclick="handleCtx('properties')"><i class="fa-solid fa-info-circle"></i> Show Properties
+        </div>
+    </div>
+
+    <!-- Dynamic Notification Container -->
+    <div id="notification-container"></div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>

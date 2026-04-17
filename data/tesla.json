@@ -1,0 +1,1076 @@
+{
+  "data": [
+    {
+      "ObjectIdentifier": "DOMAIN-TESLA.IN",
+      "ObjectType": "Domain",
+      "Properties": {
+        "name": "TESLA.IN",
+        "highvalue": true
+      }
+    },
+    {
+      "ObjectIdentifier": "GROUP-DOMAIN-ADMINS",
+      "ObjectType": "Group",
+      "Properties": {
+        "name": "DOMAIN ADMINS",
+        "highvalue": true
+      },
+      "Members": [],
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-ENTERPRISE-ADMINS",
+      "ObjectType": "Group",
+      "Properties": {
+        "name": "ENTERPRISE ADMINS",
+        "highvalue": true
+      },
+      "Members": [],
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-IT-ADMINISTRATORS",
+      "ObjectType": "Group",
+      "Properties": {
+        "name": "IT ADMINISTRATORS",
+        "highvalue": true
+      },
+      "Members": [],
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-IT-SUPPORT-TEAM",
+      "ObjectType": "Group",
+      "Properties": {
+        "name": "IT SUPPORT TEAM",
+        "highvalue": false
+      },
+      "Members": [],
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-ALL-EMPLOYEES",
+      "ObjectType": "Group",
+      "Properties": {
+        "name": "ALL EMPLOYEES",
+        "highvalue": false
+      },
+      "Members": [],
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-FINANCE",
+      "ObjectType": "Group",
+      "Properties": {
+        "name": "FINANCE",
+        "highvalue": false
+      },
+      "Members": [],
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-HR",
+      "ObjectType": "Group",
+      "Properties": {
+        "name": "HR",
+        "highvalue": false
+      },
+      "Members": [],
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-SALES",
+      "ObjectType": "Group",
+      "Properties": {
+        "name": "SALES",
+        "highvalue": false
+      },
+      "Members": [],
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-EXECUTIVES",
+      "ObjectType": "Group",
+      "Properties": {
+        "name": "EXECUTIVES",
+        "highvalue": true
+      },
+      "Members": [],
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-INTERNS",
+      "ObjectType": "Group",
+      "Properties": {
+        "name": "INTERNS",
+        "highvalue": false
+      },
+      "Members": [],
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-CERTIFICATE-PUBLISHERS",
+      "ObjectType": "Group",
+      "Properties": {
+        "name": "CERTIFICATE PUBLISHERS",
+        "highvalue": false
+      },
+      "Members": [],
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-IT-ADMINISTRATORS",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "GROUP-IT-SUPPORT-TEAM",
+          "ObjectType": "Group"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "GROUP-DOMAIN-ADMINS",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "GROUP-IT-ADMINISTRATORS",
+          "ObjectType": "Group"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-AKASH.KUMAR@TESLA.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Akash Kumar",
+        "title": "Senior Staff"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-ALL-EMPLOYEES",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-AKASH.KUMAR@TESLA.IN",
+          "ObjectType": "User"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-RAVI.KRISHNAN@TESLA.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Ravi Krishnan",
+        "title": "Senior Staff"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-ALL-EMPLOYEES",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-RAVI.KRISHNAN@TESLA.IN",
+          "ObjectType": "User"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-SAMANNEW.PATEL@TESLA.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Samannew Patel",
+        "title": "Senior Staff"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-ALL-EMPLOYEES",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-SAMANNEW.PATEL@TESLA.IN",
+          "ObjectType": "User"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-MUHAMMED.ALI@TESLA.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Muhammed Ali",
+        "title": "Senior Staff"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-ALL-EMPLOYEES",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-MUHAMMED.ALI@TESLA.IN",
+          "ObjectType": "User"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-ABDUL.RAHMAN@TESLA.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Abdul Rahman",
+        "title": "Senior Staff"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-ALL-EMPLOYEES",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-ABDUL.RAHMAN@TESLA.IN",
+          "ObjectType": "User"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-ANGEL.MARY@TESLA.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Angel Mary",
+        "title": "Senior Staff"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-ALL-EMPLOYEES",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-ANGEL.MARY@TESLA.IN",
+          "ObjectType": "User"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-PAVITHRA.REDDY@TESLA.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Pavithra Reddy",
+        "title": "Staff"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-ALL-EMPLOYEES",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-PAVITHRA.REDDY@TESLA.IN",
+          "ObjectType": "User"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-ALEENA.JOSEPH@TESLA.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Aleena Joseph",
+        "title": "Staff"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-ALL-EMPLOYEES",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-ALEENA.JOSEPH@TESLA.IN",
+          "ObjectType": "User"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-MARIA.THOMAS@TESLA.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Maria Thomas",
+        "title": "Staff"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-ALL-EMPLOYEES",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-MARIA.THOMAS@TESLA.IN",
+          "ObjectType": "User"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-SANJAY.GUPTA@TESLA.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Sanjay Gupta",
+        "title": "Staff"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-ALL-EMPLOYEES",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-SANJAY.GUPTA@TESLA.IN",
+          "ObjectType": "User"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-ANJALI.SHARMA@TESLA.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Anjali Sharma",
+        "title": "Staff"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-ALL-EMPLOYEES",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-ANJALI.SHARMA@TESLA.IN",
+          "ObjectType": "User"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-VIKRAM.SINGH@TESLA.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Vikram Singh",
+        "title": "Staff"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-ALL-EMPLOYEES",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-VIKRAM.SINGH@TESLA.IN",
+          "ObjectType": "User"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-RAHUL.VERMA@TESLA.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Rahul Verma",
+        "title": "Staff"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-ALL-EMPLOYEES",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-RAHUL.VERMA@TESLA.IN",
+          "ObjectType": "User"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-PRIYA.IYER@TESLA.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Priya Iyer",
+        "title": "Staff"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-ALL-EMPLOYEES",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-PRIYA.IYER@TESLA.IN",
+          "ObjectType": "User"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-AMIT.MEHTA@TESLA.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Amit Mehta",
+        "title": "Staff"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-ALL-EMPLOYEES",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-AMIT.MEHTA@TESLA.IN",
+          "ObjectType": "User"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-SNEHA.SAWANT@TESLA.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Sneha Sawant",
+        "title": "Staff"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-ALL-EMPLOYEES",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-SNEHA.SAWANT@TESLA.IN",
+          "ObjectType": "User"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-ARJUN.DESHMUKH@TESLA.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Arjun Deshmukh",
+        "title": "Staff"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-ALL-EMPLOYEES",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-ARJUN.DESHMUKH@TESLA.IN",
+          "ObjectType": "User"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-ROHAN.NAIR@TESLA.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Rohan Nair",
+        "title": "Staff"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-ALL-EMPLOYEES",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-ROHAN.NAIR@TESLA.IN",
+          "ObjectType": "User"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-DEEPA.PILLAI@TESLA.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Deepa Pillai",
+        "title": "Staff"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-ALL-EMPLOYEES",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-DEEPA.PILLAI@TESLA.IN",
+          "ObjectType": "User"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-KARAN.CHAUHAN@TESLA.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Karan Chauhan",
+        "title": "Staff"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-ALL-EMPLOYEES",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-KARAN.CHAUHAN@TESLA.IN",
+          "ObjectType": "User"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-SUNITA.PANDEY@TESLA.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Sunita Pandey",
+        "title": "Staff"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-ALL-EMPLOYEES",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-SUNITA.PANDEY@TESLA.IN",
+          "ObjectType": "User"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-VIJAY.YADAV@TESLA.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Vijay Yadav",
+        "title": "Staff"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-ALL-EMPLOYEES",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-VIJAY.YADAV@TESLA.IN",
+          "ObjectType": "User"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-ABHISHEK.RAO@TESLA.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Abhishek Rao",
+        "title": "Staff"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-ALL-EMPLOYEES",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-ABHISHEK.RAO@TESLA.IN",
+          "ObjectType": "User"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-ADITI.MALHOTRA@TESLA.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Aditi Malhotra",
+        "title": "Staff"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-ALL-EMPLOYEES",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-ADITI.MALHOTRA@TESLA.IN",
+          "ObjectType": "User"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-ANIKET.KULKARNI@TESLA.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Aniket Kulkarni",
+        "title": "Staff"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-ALL-EMPLOYEES",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-ANIKET.KULKARNI@TESLA.IN",
+          "ObjectType": "User"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-AMRITA.KAUR@TESLA.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Amrita Kaur",
+        "title": "Staff"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-ALL-EMPLOYEES",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-AMRITA.KAUR@TESLA.IN",
+          "ObjectType": "User"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-DARSHAN.DUTTA@TESLA.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Darshan Dutta",
+        "title": "Staff"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-ALL-EMPLOYEES",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-DARSHAN.DUTTA@TESLA.IN",
+          "ObjectType": "User"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-DEVIKA.BOSE@TESLA.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Devika Bose",
+        "title": "Staff"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-ALL-EMPLOYEES",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-DEVIKA.BOSE@TESLA.IN",
+          "ObjectType": "User"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "GROUP-DOMAIN-ADMINS",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-MARIA.THOMAS@TESLA.IN",
+          "ObjectType": "User"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "GROUP-IT-ADMINISTRATORS",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-ALEENA.JOSEPH@TESLA.IN",
+          "ObjectType": "User"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "GROUP-IT-SUPPORT-TEAM",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-AKASH.KUMAR@TESLA.IN",
+          "ObjectType": "User"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "GROUP-IT-SUPPORT-TEAM",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-PAVITHRA.REDDY@TESLA.IN",
+          "ObjectType": "User"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "GROUP-INTERNS",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-AKASH.KUMAR@TESLA.IN",
+          "ObjectType": "User"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-SQL_SVC@TESLA.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Service SQL_SVC",
+        "serviceprincipalname": "MSSQLSvc/sql01.tesla.in:1433"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "USER-WEB_SVC@TESLA.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Service WEB_SVC",
+        "serviceprincipalname": "HTTP/web01.tesla.in"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "USER-SVC_BACKUP@TESLA.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Service SVC_BACKUP",
+        "serviceprincipalname": null
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "COMPUTER-DC01@TESLA.IN",
+      "ObjectType": "Computer",
+      "Properties": {
+        "name": "DC01.TESLA.IN",
+        "operatingsystem": "Windows Server 2022",
+        "ipaddress": "10.1.1.10",
+        "highvalue": true
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "COMPUTER-SQL01@TESLA.IN",
+      "ObjectType": "Computer",
+      "Properties": {
+        "name": "SQL01.TESLA.IN",
+        "operatingsystem": "Windows Server 2019",
+        "ipaddress": "10.1.1.20",
+        "highvalue": true
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "COMPUTER-WEB01@TESLA.IN",
+      "ObjectType": "Computer",
+      "Properties": {
+        "name": "WEB01.TESLA.IN",
+        "operatingsystem": "Windows Server 2019",
+        "ipaddress": "10.1.1.30",
+        "highvalue": false
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "COMPUTER-FILE01@TESLA.IN",
+      "ObjectType": "Computer",
+      "Properties": {
+        "name": "FILE01.TESLA.IN",
+        "operatingsystem": "Windows Server 2016",
+        "ipaddress": "10.1.1.40",
+        "highvalue": false
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "COMPUTER-BACKUP01@TESLA.IN",
+      "ObjectType": "Computer",
+      "Properties": {
+        "name": "BACKUP01.TESLA.IN",
+        "operatingsystem": "Windows Server 2019",
+        "ipaddress": "10.1.1.50",
+        "highvalue": true
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "COMPUTER-HR-APP01@TESLA.IN",
+      "ObjectType": "Computer",
+      "Properties": {
+        "name": "HR-APP01.TESLA.IN",
+        "operatingsystem": "Windows Server 2016",
+        "ipaddress": "10.1.1.60",
+        "highvalue": false
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "COMPUTER-WS-01@TESLA.IN",
+      "ObjectType": "Computer",
+      "Properties": {
+        "name": "WS-01.TESLA.IN",
+        "operatingsystem": "Windows 11 Pro",
+        "ipaddress": "10.1.2.101",
+        "highvalue": false
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "COMPUTER-WS-02@TESLA.IN",
+      "ObjectType": "Computer",
+      "Properties": {
+        "name": "WS-02.TESLA.IN",
+        "operatingsystem": "Windows 11 Pro",
+        "ipaddress": "10.1.2.102",
+        "highvalue": false
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "COMPUTER-WS-03@TESLA.IN",
+      "ObjectType": "Computer",
+      "Properties": {
+        "name": "WS-03.TESLA.IN",
+        "operatingsystem": "Windows 10 Pro",
+        "ipaddress": "10.1.2.103",
+        "highvalue": false
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "COMPUTER-WS-04@TESLA.IN",
+      "ObjectType": "Computer",
+      "Properties": {
+        "name": "WS-04.TESLA.IN",
+        "operatingsystem": "Windows 10 Pro",
+        "ipaddress": "10.1.2.104",
+        "highvalue": false
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "COMPUTER-CEO-LAPTOP@TESLA.IN",
+      "ObjectType": "Computer",
+      "Properties": {
+        "name": "CEO-LAPTOP.TESLA.IN",
+        "operatingsystem": "Windows 11 Enterprise",
+        "ipaddress": "10.1.5.1",
+        "highvalue": true
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GPO-Default-Domain-Policy",
+      "ObjectType": "GPO",
+      "Properties": {
+        "name": "Default Domain Policy",
+        "highvalue": false
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GPO-Server-Security",
+      "ObjectType": "GPO",
+      "Properties": {
+        "name": "Server Security",
+        "highvalue": false
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GPO-Workstation-Hardening",
+      "ObjectType": "GPO",
+      "Properties": {
+        "name": "Workstation Hardening",
+        "highvalue": false
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GPO-Executive-Policy",
+      "ObjectType": "GPO",
+      "Properties": {
+        "name": "Executive Policy",
+        "highvalue": false
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "USER-SQL_SVC@TESLA.IN",
+      "ObjectType": "User",
+      "Aces": [
+        {
+          "PrincipalSID": "USER-AKASH.KUMAR@TESLA.IN",
+          "PrincipalType": "User",
+          "RightName": "Kerberoastable"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "GROUP-IT-ADMINISTRATORS",
+      "ObjectType": "Group",
+      "Aces": [
+        {
+          "PrincipalSID": "USER-SQL_SVC@TESLA.IN",
+          "PrincipalType": "User",
+          "RightName": "GenericAll"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "COMPUTER-WEB01@TESLA.IN",
+      "ObjectType": "Computer",
+      "Aces": [
+        {
+          "PrincipalSID": "GROUP-IT-SUPPORT-TEAM",
+          "PrincipalType": "Group",
+          "RightName": "AdminTo"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-WEB_SVC@TESLA.IN",
+      "ObjectType": "User",
+      "Aces": [
+        {
+          "PrincipalSID": "COMPUTER-WEB01@TESLA.IN",
+          "PrincipalType": "Computer",
+          "RightName": "HasSession"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "GROUP-DOMAIN-ADMINS",
+      "ObjectType": "Group",
+      "Aces": [
+        {
+          "PrincipalSID": "COMPUTER-WEB01@TESLA.IN",
+          "PrincipalType": "Computer",
+          "RightName": "UnconstrainedDelegation"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "DOMAIN-TESLA.IN",
+      "ObjectType": "Domain",
+      "Aces": [
+        {
+          "PrincipalSID": "USER-SVC_BACKUP@TESLA.IN",
+          "PrincipalType": "User",
+          "RightName": "DCSync"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "COMPUTER-CEO-LAPTOP@TESLA.IN",
+      "ObjectType": "Computer",
+      "Aces": [
+        {
+          "PrincipalSID": "GROUP-EXECUTIVES",
+          "PrincipalType": "Group",
+          "RightName": "AdminTo"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "COMPUTER-SQL01@TESLA.IN",
+      "ObjectType": "Computer",
+      "Aces": [
+        {
+          "PrincipalSID": "GPO-Server-Security",
+          "PrincipalType": "GPO",
+          "RightName": "GPLink"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "GPO-Server-Security",
+      "ObjectType": "GPO",
+      "Aces": [
+        {
+          "PrincipalSID": "GROUP-IT-ADMINISTRATORS",
+          "PrincipalType": "Group",
+          "RightName": "EditSettings"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "GROUP-SALES",
+      "ObjectType": "Group",
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-RAVI.KRISHNAN@TESLA.IN",
+          "ObjectType": "User"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "COMPUTER-FILE01@TESLA.IN",
+      "ObjectType": "Computer",
+      "Aces": [
+        {
+          "PrincipalSID": "GROUP-SALES",
+          "PrincipalType": "Group",
+          "RightName": "GenericWrite"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "COMPUTER-BACKUP01@TESLA.IN",
+      "ObjectType": "Computer",
+      "Aces": [
+        {
+          "PrincipalSID": "GROUP-HR",
+          "PrincipalType": "Group",
+          "RightName": "WriteDacl"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-SQL_SVC@TESLA.IN",
+      "ObjectType": "User",
+      "Aces": [
+        {
+          "PrincipalSID": "COMPUTER-SQL01@TESLA.IN",
+          "PrincipalType": "Computer",
+          "RightName": "HasSession"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-ANGEL.MARY@TESLA.IN",
+      "ObjectType": "User",
+      "Aces": [
+        {
+          "PrincipalSID": "COMPUTER-CEO-LAPTOP@TESLA.IN",
+          "PrincipalType": "Computer",
+          "RightName": "HasSession"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "COMPUTER-DC01@TESLA.IN",
+      "ObjectType": "Computer",
+      "Aces": [
+        {
+          "PrincipalSID": "GROUP-DOMAIN-ADMINS",
+          "PrincipalType": "Group",
+          "RightName": "AdminTo"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "type": "azurehound",
+    "version": 4
+  }
+}

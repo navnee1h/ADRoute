@@ -1,0 +1,478 @@
+{
+  "data": [
+    {
+      "ObjectIdentifier": "USER-AKASH@TECHCORP.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Akash Kumar",
+        "title": "IT Intern",
+        "department": "IT"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "USER-RAVI@TECHCORP.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Ravi Krishnan",
+        "title": "New Employee",
+        "department": "Sales"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "USER-SAMANNEW@TECHCORP.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Samannew Patel",
+        "title": "Marketing Manager",
+        "department": "Marketing"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "USER-MUHAMMED@TECHCORP.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Muhammed Ali",
+        "title": "Sales Executive",
+        "department": "Sales"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "USER-ABDUL@TECHCORP.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Abdul Rahman",
+        "title": "HR Manager",
+        "department": "HR"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "USER-ANGEL@TECHCORP.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Angel Mary",
+        "title": "Finance Director",
+        "department": "Finance"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "USER-PAVITHRA@TECHCORP.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Pavithra Reddy",
+        "title": "IT Support Engineer",
+        "department": "IT"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "USER-ALEENA@TECHCORP.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Aleena Joseph",
+        "title": "Senior System Administrator",
+        "department": "IT"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "USER-MARIA@TECHCORP.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Maria Thomas",
+        "title": "IT Director",
+        "department": "IT"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "USER-SQLSVC@TECHCORP.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "SQL Service Account",
+        "serviceprincipalname": "MSSQLSvc/sql.techcorp.in:1433"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "USER-BACKUPSVC@TECHCORP.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Backup Service Account"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "USER-WEBSVC@TECHCORP.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Web Service Account"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "USER-PRINTSVC@TECHCORP.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Print Spooler Service"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-INTERNS@TECHCORP.IN",
+      "ObjectType": "Group",
+      "Properties": {
+        "name": "Interns",
+        "highvalue": false
+      },
+      "Aces": [
+        {
+          "PrincipalSID": "USER-AKASH@TECHCORP.IN",
+          "PrincipalType": "User",
+          "RightName": "MemberOf"
+        }
+      ],
+      "Members": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-IT-SUPPORT@TECHCORP.IN",
+      "ObjectType": "Group",
+      "Properties": {
+        "name": "IT Support Team",
+        "highvalue": false
+      },
+      "Aces": [
+        {
+          "PrincipalSID": "USER-AKASH@TECHCORP.IN",
+          "PrincipalType": "User",
+          "RightName": "MemberOf"
+        },
+        {
+          "PrincipalSID": "USER-PAVITHRA@TECHCORP.IN",
+          "PrincipalType": "User",
+          "RightName": "MemberOf"
+        }
+      ],
+      "Members": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-ALL-EMPLOYEES@TECHCORP.IN",
+      "ObjectType": "Group",
+      "Properties": {
+        "name": "All Employees",
+        "highvalue": false
+      },
+      "Aces": [
+        {
+          "PrincipalSID": "USER-RAVI@TECHCORP.IN",
+          "PrincipalType": "User",
+          "RightName": "MemberOf"
+        },
+        {
+          "PrincipalSID": "USER-SAMANNEW@TECHCORP.IN",
+          "PrincipalType": "User",
+          "RightName": "MemberOf"
+        },
+        {
+          "PrincipalSID": "USER-MUHAMMED@TECHCORP.IN",
+          "PrincipalType": "User",
+          "RightName": "MemberOf"
+        },
+        {
+          "PrincipalSID": "USER-AKASH@TECHCORP.IN",
+          "PrincipalType": "User",
+          "RightName": "MemberOf"
+        }
+      ],
+      "Members": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-IT-ADMINS@TECHCORP.IN",
+      "ObjectType": "Group",
+      "Properties": {
+        "name": "IT Administrators",
+        "highvalue": true
+      },
+      "Aces": [
+        {
+          "PrincipalSID": "USER-ALEENA@TECHCORP.IN",
+          "PrincipalType": "User",
+          "RightName": "MemberOf"
+        }
+      ],
+      "Members": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-DOMAIN-ADMINS@TECHCORP.IN",
+      "ObjectType": "Group",
+      "Properties": {
+        "name": "Domain Admins",
+        "highvalue": true
+      },
+      "Aces": [
+        {
+          "PrincipalSID": "USER-MARIA@TECHCORP.IN",
+          "PrincipalType": "User",
+          "RightName": "MemberOf"
+        }
+      ],
+      "Members": []
+    },
+    {
+      "ObjectIdentifier": "COMPUTER-INTERN-WS@TECHCORP.IN",
+      "ObjectType": "Computer",
+      "Properties": {
+        "name": "INTERN-WS.TECHCORP.IN",
+        "operatingsystem": "Windows 10 Pro",
+        "ipaddress": "192.168.10.50",
+        "highvalue": false
+      },
+      "Aces": [
+        {
+          "PrincipalSID": "GROUP-INTERNS@TECHCORP.IN",
+          "PrincipalType": "Group",
+          "RightName": "AdminTo"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "COMPUTER-FILESERVER@TECHCORP.IN",
+      "ObjectType": "Computer",
+      "Properties": {
+        "name": "FILESERVER.TECHCORP.IN",
+        "operatingsystem": "Windows Server 2019",
+        "ipaddress": "192.168.1.50",
+        "highvalue": false
+      },
+      "Aces": [
+        {
+          "PrincipalSID": "GROUP-ALL-EMPLOYEES@TECHCORP.IN",
+          "PrincipalType": "Group",
+          "RightName": "AdminTo"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "COMPUTER-WEBSERVER@TECHCORP.IN",
+      "ObjectType": "Computer",
+      "Properties": {
+        "name": "WEBSERVER.TECHCORP.IN",
+        "operatingsystem": "Windows Server 2019",
+        "ipaddress": "192.168.1.80",
+        "highvalue": false
+      },
+      "Aces": [
+        {
+          "PrincipalSID": "GROUP-IT-SUPPORT@TECHCORP.IN",
+          "PrincipalType": "Group",
+          "RightName": "AdminTo"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "COMPUTER-PRINTSERVER@TECHCORP.IN",
+      "ObjectType": "Computer",
+      "Properties": {
+        "name": "PRINTSERVER.TECHCORP.IN",
+        "operatingsystem": "Windows Server 2016",
+        "ipaddress": "192.168.1.70",
+        "highvalue": false
+      },
+      "Aces": [
+        {
+          "PrincipalSID": "GROUP-ALL-EMPLOYEES@TECHCORP.IN",
+          "PrincipalType": "Group",
+          "RightName": "AdminTo"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "COMPUTER-SQLSERVER@TECHCORP.IN",
+      "ObjectType": "Computer",
+      "Properties": {
+        "name": "SQLSERVER.TECHCORP.IN",
+        "operatingsystem": "Windows Server 2019 Datacenter",
+        "ipaddress": "192.168.1.100",
+        "highvalue": true
+      },
+      "Aces": [
+        {
+          "PrincipalSID": "GROUP-IT-ADMINS@TECHCORP.IN",
+          "PrincipalType": "Group",
+          "RightName": "AdminTo"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "COMPUTER-BACKUPSERVER@TECHCORP.IN",
+      "ObjectType": "Computer",
+      "Properties": {
+        "name": "BACKUPSERVER.TECHCORP.IN",
+        "operatingsystem": "Windows Server 2019",
+        "ipaddress": "192.168.1.110",
+        "highvalue": true
+      },
+      "Aces": [
+        {
+          "PrincipalSID": "GROUP-IT-ADMINS@TECHCORP.IN",
+          "PrincipalType": "Group",
+          "RightName": "AdminTo"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-WEBSVC@TECHCORP.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Web Service Account"
+      },
+      "Aces": [
+        {
+          "PrincipalSID": "COMPUTER-WEBSERVER@TECHCORP.IN",
+          "PrincipalType": "Computer",
+          "RightName": "HasSession"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "GROUP-DOMAIN-ADMINS@TECHCORP.IN",
+      "ObjectType": "Group",
+      "Properties": {
+        "name": "Domain Admins",
+        "highvalue": true
+      },
+      "Aces": [
+        {
+          "PrincipalSID": "USER-WEBSVC@TECHCORP.IN",
+          "PrincipalType": "User",
+          "RightName": "UnconstrainedDelegation"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-PRINTSVC@TECHCORP.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Print Spooler Service"
+      },
+      "Aces": [
+        {
+          "PrincipalSID": "COMPUTER-PRINTSERVER@TECHCORP.IN",
+          "PrincipalType": "Computer",
+          "RightName": "HasSession"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "COMPUTER-DC01@TECHCORP.IN",
+      "ObjectType": "Computer",
+      "Properties": {
+        "name": "DC01.TECHCORP.IN",
+        "operatingsystem": "Windows Server 2022",
+        "ipaddress": "192.168.1.10",
+        "highvalue": true
+      },
+      "Aces": [
+        {
+          "PrincipalSID": "USER-PRINTSVC@TECHCORP.IN",
+          "PrincipalType": "User",
+          "RightName": "DCSync"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-SQLSVC@TECHCORP.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "SQL Service Account",
+        "serviceprincipalname": "MSSQLSvc/sql:1433"
+      },
+      "Aces": [
+        {
+          "PrincipalSID": "USER-AKASH@TECHCORP.IN",
+          "PrincipalType": "User",
+          "RightName": "Kerberoastable"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "GROUP-IT-ADMINS@TECHCORP.IN",
+      "ObjectType": "Group",
+      "Properties": {
+        "name": "IT Admins",
+        "highvalue": true
+      },
+      "Aces": [
+        {
+          "PrincipalSID": "USER-SQLSVC@TECHCORP.IN",
+          "PrincipalType": "User",
+          "RightName": "GenericAll"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-BACKUPSVC@TECHCORP.IN",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Backup Service Account"
+      },
+      "Aces": [
+        {
+          "PrincipalSID": "GROUP-IT-ADMINS@TECHCORP.IN",
+          "PrincipalType": "Group",
+          "RightName": "GenericWrite"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "GROUP-DOMAIN-ADMINS@TECHCORP.IN",
+      "ObjectType": "Group",
+      "Properties": {
+        "name": "Domain Admins",
+        "highvalue": true
+      },
+      "Aces": [
+        {
+          "PrincipalSID": "USER-BACKUPSVC@TECHCORP.IN",
+          "PrincipalType": "User",
+          "RightName": "ForceChangePassword"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "COMPUTER-DC01@TECHCORP.IN",
+      "ObjectType": "Computer",
+      "Properties": {
+        "name": "DC01.TECHCORP.IN",
+        "operatingsystem": "Windows Server 2022",
+        "ipaddress": "192.168.1.10",
+        "highvalue": true
+      },
+      "Aces": [
+        {
+          "PrincipalSID": "GROUP-DOMAIN-ADMINS@TECHCORP.IN",
+          "PrincipalType": "Group",
+          "RightName": "AdminTo"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "DOMAIN-TECHCORP.IN",
+      "ObjectType": "Domain",
+      "Properties": {
+        "name": "TECHCORP.IN",
+        "highvalue": true
+      },
+      "Aces": []
+    }
+  ],
+  "meta": {
+    "type": "azurehound",
+    "version": 4
+  }
+}

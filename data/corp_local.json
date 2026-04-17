@@ -1,0 +1,149 @@
+{
+  "data": [
+    {
+      "ObjectIdentifier": "DOMAIN-CORP",
+      "ObjectType": "Domain",
+      "Properties": {
+        "name": "CORP.LOCAL",
+        "highvalue": true
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-DOMAIN-ADMINS@CORP.LOCAL",
+      "ObjectType": "Group",
+      "Properties": {
+        "name": "DOMAIN ADMINS",
+        "highvalue": true
+      },
+      "Members": [],
+      "Aces": [
+        {
+          "PrincipalSID": "USER-SQL-SVC@CORP.LOCAL",
+          "PrincipalType": "User",
+          "RightName": "GenericAll"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "GROUP-IT-ADMINS@CORP.LOCAL",
+      "ObjectType": "Group",
+      "Properties": {
+        "name": "IT ADMINS"
+      },
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-JANE-ADMIN@CORP.LOCAL",
+          "ObjectType": "User"
+        }
+      ],
+      "Aces": [
+        {
+          "PrincipalSID": "GROUP-DOMAIN-ADMINS@CORP.LOCAL",
+          "PrincipalType": "Group",
+          "RightName": "MemberOf"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-JANE-ADMIN@CORP.LOCAL",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Jane Admin (IT)"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "GROUP-HELPDESK@CORP.LOCAL",
+      "ObjectType": "Group",
+      "Properties": {
+        "name": "HELPDESK"
+      },
+      "Members": [
+        {
+          "ObjectIdentifier": "USER-BOB-HELPDESK@CORP.LOCAL",
+          "ObjectType": "User"
+        }
+      ],
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "USER-BOB-HELPDESK@CORP.LOCAL",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Bob (Helpdesk)"
+      },
+      "Aces": []
+    },
+    {
+      "ObjectIdentifier": "COMPUTER-WS01@CORP.LOCAL",
+      "ObjectType": "Computer",
+      "Properties": {
+        "name": "HR-WORKSTATION-01"
+      },
+      "Aces": [
+        {
+          "PrincipalSID": "GROUP-HELPDESK@CORP.LOCAL",
+          "PrincipalType": "Group",
+          "RightName": "AdminTo"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-ALICE-HR@CORP.LOCAL",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "Alice (HR Director)"
+      },
+      "Aces": [
+        {
+          "PrincipalSID": "GROUP-HELPDESK@CORP.LOCAL",
+          "PrincipalType": "Group",
+          "RightName": "ForceChangePassword"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-SQL-SVC@CORP.LOCAL",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "SQL Service",
+        "highvalue": false
+      },
+      "Aces": [
+        {
+          "PrincipalSID": "USER-INTERN@CORP.LOCAL",
+          "PrincipalType": "User",
+          "RightName": "Kerberoastable"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "COMPUTER-DC01@CORP.LOCAL",
+      "ObjectType": "Computer",
+      "Properties": {
+        "name": "DC01.CORP.LOCAL",
+        "highvalue": true
+      },
+      "Aces": [
+        {
+          "PrincipalSID": "GROUP-DOMAIN-ADMINS@CORP.LOCAL",
+          "PrincipalType": "Group",
+          "RightName": "AdminTo"
+        }
+      ]
+    },
+    {
+      "ObjectIdentifier": "USER-INTERN@CORP.LOCAL",
+      "ObjectType": "User",
+      "Properties": {
+        "name": "New Intern"
+      },
+      "Aces": []
+    }
+  ],
+  "meta": {
+    "type": "generic",
+    "version": 4
+  }
+}
