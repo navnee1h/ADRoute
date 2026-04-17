@@ -158,6 +158,3 @@ AD-Project/
 - **AI Triage**: ML-based classification of "Likeliness of Exploitation" based on actual network traffic logs.
 
 ---
-**Document Version**: 2.1.0  
-**Internal Project**: Operational Security Analytics  
-**Classification**: CONFIDENTIAL / RED TEAM USE ONLY
