@@ -1,160 +1,94 @@
-# 📄 Technical Documentation
+# Previon
 
-## *Comprehensive Attack Path Analysis & Visualization Framework for Active Directory*
+Previon is a tool for visualizing Active Directory attack paths. It uses data from SharpHound or BloodHound to help you map out AD relationships and find ways to escalate privileges.
 
----
+![Main Dashboard](<!-- INSERT DASHBOARD SCREENSHOT HERE -->)
 
-## 1. Executive Summary
+## Table of Contents
 
-This project is a sophisticated security orchestration and visualization platform designed to identify, analyze, and neutralize relationship-based attack vectors within **Active Directory (AD)** environments. By transforming raw SharpHound data into a high-fidelity directed graph, enables security analysts to visualize complex privilege escalation chains, compute stealthy attack paths, and identify critical network choke points.
+- [What is it for?](#what-is-it-for)
+- [How is it different from BloodHound?](#how-is-it-different-from-bloodhound)
+- [Features](#features)
+- [Setup](#setup)
+- [Usage](#usage)
 
-The system bridges the gap between raw data collection and actionable offensive/defensive intelligence, providing a real-time environment for simulating breach scenarios and assessing the total "Blast Radius" of compromised identities.
+## What is it for?
 
----
+- **Red Teaming & Pentesting:** Find the easiest or shortest path to compromise a target (like Domain Admin) and keep track of your notes and looted credentials.
+- **Blue Teaming & Defense:** See what an attacker could reach if a specific account is compromised (blast radius), or find the main choke points in your AD network that need to be fixed.
 
-## 2. System Architecture
+## How is it different from BloodHound?
 
-The application follows a modern **decoupled monolith** architecture utilizing a Flask-based RESTful API and a high-performance Vanilla JavaScript frontend.
-
-### 2.1 Backend Engine (Python Development Stack)
-
-- **Framework**: Flask (Web Server Gateway Interface)
-- **Graph Mathematics**: **NetworkX** (Directed Graph Theory Library)
-- **State Management**: JSON-based persistent storage for node status (Loot, Notes, Compromise status).
-- **Core Logic**: `graph_logic.py` - Handles the abstraction of AD relationships into mathematical edges with difficulty weights.
-
-### 2.2 Frontend Visualization (Modern Web UI)
-
-- **Rendering Engine**: **Cytoscape.js** (Canvas-based graph rendering)
-- **Layout Management**: **Dagre** (Directed Acyclic Graph REnderer for hierarchical layering)
-- **UI Framework**: Vanilla JS with a custom CSS design system optimized for dark-mode "SOC" (Security Operations Center) aesthetics.
-- **Interactions**: Asynchronous Fetch API for non-blocking data synchronization.
-
----
-
-## 3. Core Graph Logic & Informatics
-
-### 3.1 Data Ingestion Model
-
-This utilizes the **SharpHound (BloodHound)** data schema. It parses multi-stage JSON outputs, specifically looking for:
-
-- **Objects**: Users, Groups, Computers, GPOs, OUs, and Domains.
-- **Access Control Entries (ACEs)**: Relationship mappings such as `GenericAll`, `WriteDacl`, `AdminTo`, etc.
-- **Membership**: Group nesting and session data.
-
-The graph construction logic (`build_graph`) standardizes all identifiers to uppercase for case-insensitive matching and ensures graph integrity by handling missing principal nodes automatically.
-
-### 3.2 The Exploit Difficulty Weight Model (EDWM)
-
-Unlike standard BFS tools,This uses a weighted model to differentiate between "Noisy/Difficult" exploits and "Silent/Easy" privilege inheritance.
-
-| Relationship Type | Weight | Rationale |
+| Feature | BloodHound | Previon |
 | :--- | :--- | :--- |
-| **MemberOf** | 0.1 | Transparent inheritance; zero detection risk. |
-| **AdminTo** | 1.0 | Requires execution (PsExec/WMI), low-medium risk. |
-| **GenericAll** | 2.0 | Total object control; multiple vectors possible. |
-| **Kerberoastable** | 5.0 | Offline cracking; detectable via honeytoken SPNs. |
-| **DCSync** | 10.0 | Extremely high-value/noisy; indicative of full domain compromise. |
-| **WriteDacl** | 3.0 | Structural change; requires careful ACL manipulation. |
+| **Path Weights** | All paths are treated the same. | Assigns "weights" to different attacks. It can prioritize quiet attacks (like Group Membership) over noisy ones (like DCSync). |
+| **Multiple Starting Points** | Finds paths from one node to another. | Can find the easiest path to a target starting from *all* the nodes you currently control. |
+| **Keeping Track** | Mainly just for viewing the graph. | Lets you save hashes, passwords, and notes directly on the nodes. It saves your progress locally. |
+| **Finding Bottlenecks** | Need to write custom Cypher queries. | Automatically highlights the nodes that show up in the most attack paths. |
 
-### 3.3 Algorithms
+## Features
 
-1. **Fastest Path (BFS)**: Optimizes for the minimum number of "hops" (nodes) between source and target.
-2. **Stealthiest Path (Dijkstra)**: Minimizes the total cumulative weight, or "Path of Least Resistance."
-3. **Choke Point Detection (Betweenness Centrality)**: Identifies nodes that appear most frequently on shortest paths. High centrality nodes (Score > 0.05) are flagged as critical bottlenecks for remediation.
+### 1. Pathfinding
 
----
+It can calculate different types of paths:
 
-## 4. Feature Deep Dive
+- **Shortest Path:** Finds the path with the fewest steps.
+- **Easiest Path:** Tries to find paths that require less complex or noisy exploits based on hardcoded weights.
+- **Paths from Owned:** Automatically finds the best route to your target from any node you've already compromised.
 
-### 4.1 Real-Time Session Persistence
+![Pathfinding](<!-- INSERT PATHFINDING SCREENSHOT HERE -->)
 
-The system maintains a `state.json` file that persists across server restarts. It tracks:
+### 2. Note Taking and State
 
-- **Owned Nodes**: Red-highlighted nodes representing an established foothold.
-- **Loot Capture**: Captured hashes, passwords, or tickets stored per node.
-- **Investigation Notes**: Analytical observations for post-operation reports.
+- **Loot:** Save credentials or hashes on the computers or users you compromise.
+- **Notes:** Write down what you find on each node.
+- **Persistence:** Everything is saved to a local file (`data/state.json`), so if you close the tool, your data is still there when you open it again.
 
-### 4.2 Automated Attack Playbooks
+![Notes and Loot](<!-- INSERT NODE PROPERTIES SCREENSHOT HERE -->)
 
-When a path is calculated, the system dynamically generates a **Command Playbook**. It maps graph edges to specific CLI tools like:
+### 3. Impact and Choke Points
 
-- `psexec.py` (Impacket)
-- `Rubeus.exe`
-- `mimikatz.exe`
-- `certipy-ad` (for ADCS paths)
+- **Impact Analysis:** See all the nodes you can reach from a single starting point.
+- **Choke Points:** Shows you the most common nodes used in attack paths so defenders know what to fix first.
 
-### 4.3 Impact Analysis (Blast Radius)
+![Choke Points](<!-- INSERT CHOKEPOINT SCREENSHOT HERE -->)
 
-Using a directed Breath-First Search (BFS) traversal, the "Impact Analysis" feature calculates the total reachability of a node. It answers the critical question: *"If this account is compromised, exactly how many other objects can be reached?"*
+### 4. Graph Visuals
 
----
+- Highlights important nodes like Domain Admins and Domain Controllers.
+- Shows Group Policy links and ADCS objects.
 
-## 5. API Reference
+## Setup
 
-### 5.1 Graph endpoints
+1. **Clone the repo:**
 
-- `GET /api/graph`: Returns the complete serialized graph for Cytoscape.
-- `GET /api/summary`: Returns statistical breakdown (Admins, Users, Computers).
-- `GET /api/files`: Lists available JSON datasets.
+   ```bash
+   git clone <your-repo-link>
+   cd AD
+   ```
 
-### 5.2 Pathfinding
+2. **Install requirements:**
 
-- `POST /api/path/shortest`:
-  - **Body**: `{ "source": "node_id", "target": "node_id" }`
-  - **Support**: Sending `"source": "OWNED"` triggers multi-source Dijkstra from all compromised nodes.
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-### 5.3 State Management
+   *(Requires: `flask`, `networkx`, `scipy`)*
 
-- `POST /api/mark_owned`: Mark a node as compromised.
-- `POST /api/update_node_details`: Update loot/notes for a specific node.
+3. **Start the app:**
 
----
+   ```bash
+   python app.py
+   ```
 
-## 6. Project Structure
+4. **Open in browser:**
+   Go to `http://127.0.0.1:5000`
 
-```text
-AD-Project/
-├── app.py                # Main Flask Application & API Routes
-├── graph_logic.py        # Graph construction & Pathfinding logic
-├── debug_graph.py        # CLI Utility for logic verification
-├── data/
-│   ├── state.json        # Persistent user session data
-│   └── *.json            # SharpHound datasets (Tesla, TechCorp, etc.)
-├── static/
-│   ├── css/
-│   │   └── style.css     # Design System (Glassmorphism & Dark Mode)
-│   └── js/
-│   │   └── main.js       # Cytoscape management & UI Logic
-└── templates/
-    └── index.html        # Main Application SPA Shell
-```
+## Usage
 
----
+1. **Load Data:** Click the file icon in the top right to upload your SharpHound `.json` file.
+2. **Mark Owned:** Right-click on a node you control and click "Mark as Owned".
+3. **Find Paths:** Use the sidebar to set a Target and click "Trace Fastest Path" or "Trace Stealthiest Path".
+4. **Save Loot:** Click on a node to open the side panel where you can type in notes and hashes.
 
-## 7. Setup & Deployment
-
-1. **Install Dependencies**:
-
-    ```bash
-    pip install flask networkx
-    ```
-
-2. **Run Server**:
-
-    ```bash
-    python app.py
-    ```
-
-3. **Access UI**: Navigate to `http://127.0.0.1:5000`
-
----
-
-## 8. Future Roadmap
-
-- **Graph Differing**: Visualize changes between two network snapshots.
-- **Automated Remediation**: Generate Group Policy Objects (GPOs) to prune high-risk paths.
-- **Neo4j Connector**: Direct integration with professional-grade graph databases for larger (>50k node) environments.
-- **AI Triage**: ML-based classification of "Likeliness of Exploitation" based on actual network traffic logs.
-
----
+![Usage](<!-- INSERT UPLOAD & OWNED SCREENSHOT HERE -->)
