@@ -1,8 +1,8 @@
-# Previon
+# ADRoute
 
-Previon is a tool for visualizing Active Directory attack paths. It uses data from SharpHound or BloodHound to help you map out AD relationships and find ways to escalate privileges.
+ADRoute is a tool for visualizing Active Directory attack paths. It uses data from SharpHound or BloodHound to help you map out AD relationships and find ways to escalate privileges.
 
-![Main Dashboard](<!-- INSERT DASHBOARD SCREENSHOT HERE -->)
+![Main Dashboard](./screenshots/1.png)
 
 ## Table of Contents
 
@@ -19,7 +19,7 @@ Previon is a tool for visualizing Active Directory attack paths. It uses data fr
 
 ## How is it different from BloodHound?
 
-| Feature | BloodHound | Previon |
+| Feature | BloodHound | ADRoute |
 | :--- | :--- | :--- |
 | **Path Weights** | All paths are treated the same. | Assigns "weights" to different attacks. It can prioritize quiet attacks (like Group Membership) over noisy ones (like DCSync). |
 | **Multiple Starting Points** | Finds paths from one node to another. | Can find the easiest path to a target starting from *all* the nodes you currently control. |
@@ -36,7 +36,7 @@ It can calculate different types of paths:
 - **Easiest Path:** Tries to find paths that require less complex or noisy exploits based on hardcoded weights.
 - **Paths from Owned:** Automatically finds the best route to your target from any node you've already compromised.
 
-![Pathfinding](<!-- INSERT PATHFINDING SCREENSHOT HERE -->)
+![Pathfinding](./screenshots/2.png)
 
 ### 2. Note Taking and State
 
@@ -44,14 +44,14 @@ It can calculate different types of paths:
 - **Notes:** Write down what you find on each node.
 - **Persistence:** Everything is saved to a local file (`data/state.json`), so if you close the tool, your data is still there when you open it again.
 
-![Notes and Loot](<!-- INSERT NODE PROPERTIES SCREENSHOT HERE -->)
+![Notes and Loot](./screenshots/3.png)
 
 ### 3. Impact and Choke Points
 
 - **Impact Analysis:** See all the nodes you can reach from a single starting point.
 - **Choke Points:** Shows you the most common nodes used in attack paths so defenders know what to fix first.
 
-![Choke Points](<!-- INSERT CHOKEPOINT SCREENSHOT HERE -->)
+![Choke Points](./screenshots/4.png)
 
 ### 4. Graph Visuals
 
@@ -63,8 +63,8 @@ It can calculate different types of paths:
 1. **Clone the repo:**
 
    ```bash
-   git clone <your-repo-link>
-   cd AD
+   git clone https://github.com/navnee1h/ADRoute
+   cd ADRoute
    ```
 
 2. **Install requirements:**
@@ -91,4 +91,3 @@ It can calculate different types of paths:
 3. **Find Paths:** Use the sidebar to set a Target and click "Trace Fastest Path" or "Trace Stealthiest Path".
 4. **Save Loot:** Click on a node to open the side panel where you can type in notes and hashes.
 
-![Usage](<!-- INSERT UPLOAD & OWNED SCREENSHOT HERE -->)

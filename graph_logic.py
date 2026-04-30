@@ -66,7 +66,10 @@ def build_graph(json_data: dict) -> nx.DiGraph:
         else:
             # Update existing node if encountered again (e.g. from different file merge in real app)
             # merging attributes
-            pass
+            G.nodes[node_id]['label'] = label
+            G.nodes[node_id]['type'] = node_type
+            if 'owned' not in G.nodes[node_id]:
+                G.nodes[node_id]['owned'] = False
         
         # 1. Process Aces (Access Control Entries)
         aces = item.get("Aces", [])
@@ -90,6 +93,11 @@ def build_graph(json_data: dict) -> nx.DiGraph:
             rel_type = ace.get("RightName", "Unknown")
             weight = get_edge_weight(rel_type)
             
+            # Ensure source node exists even if we haven't processed its full entry yet
+            if not G.has_node(source_node):
+                principal_type = ace.get("PrincipalType", "Unknown")
+                G.add_node(source_node, label=source_node, type=principal_type, owned=False)
+            
             G.add_edge(
                 source_node, 
                 target_node, 
@@ -97,11 +105,6 @@ def build_graph(json_data: dict) -> nx.DiGraph:
                 weight=weight,
                 technique="ACL"
             )
-            
-            # Ensure source node exists even if we haven't processed its full entry yet
-            if not G.has_node(source_node):
-                principal_type = ace.get("PrincipalType", "Unknown")
-                G.add_node(source_node, label=source_node, type=principal_type, owned=False)
 
         # 2. Process MemberOf (Explicit Membership)
         # Note: SharpHound 4 often puts group membership in 'IsGroups' or 'GroupMembership' depending on collection method.
@@ -120,6 +123,9 @@ def build_graph(json_data: dict) -> nx.DiGraph:
                 continue
             member_id = member_id.upper()
             
+            if not G.has_node(member_id):
+                 G.add_node(member_id, label=member_id, type=member.get("ObjectType", "User"), owned=False)
+            
             # Member -> Item(Group)
             G.add_edge(
                 member_id,
@@ -128,8 +134,6 @@ def build_graph(json_data: dict) -> nx.DiGraph:
                 weight=get_edge_weight("MemberOf"),
                 technique="GroupMembership"
             )
-            if not G.has_node(member_id):
-                 G.add_node(member_id, label=member_id, type=member.get("ObjectType", "User"), owned=False)
 
     return G
 
